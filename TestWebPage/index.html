@@ -1,0 +1,97 @@
+<html>
+	<head>
+	<script type="text/javascript">
+		function validate(){
+			var empName = document.getElementById("empName").value;
+			var empNumber = document.getElementById("empNumber").value;
+			var empPass = document.getElementById("empPass").value;
+			var empRePass = document.getElementById("empRePass").value;
+			
+			if(empName!="")
+			{
+				if(empNumber!="")
+				{
+					if(empPass!="")
+					{
+						if(empRePass!="")
+						{
+							if(empPass==empRePass)
+							{
+								document.getElementById("result").innerHTML = "Employee Registered successfully";
+							}
+							else{
+								document.getElementById("result").innerHTML = "Both Password fields do not match";
+							}
+						}
+						else
+						{
+							document.getElementById("result").innerHTML = "Please retype your password to confirm.";	
+						}
+					}
+					else
+					{
+						document.getElementById("result").innerHTML = "Please Enter a Password.";	
+					}
+				}
+				else
+				{
+					document.getElementById("result").innerHTML = "Please Enter a Mobile Number.";	
+				}
+			}
+			else
+			{
+				document.getElementById("result").innerHTML = "Please Enter a Name.";	
+			}
+			
+		}
+	</script>
+	</head>
+	<body>
+		<center>
+			<h1>Employee Registration Form</h1>
+			<table>
+				<tr>
+					<td>
+						Name:
+					</td>
+					<td>
+						<input type="text" id="empName">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mobile Number:
+					</td>
+					<td>
+						<input type="text" id="empNumber">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password:
+					</td>
+					<td>
+						<input type="password" id="empPass">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Confirm Password:
+					</td>
+					<td>
+						<input type="password" id="empRePass">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+					</td>
+					<td>
+						<button type="button" id="submit" value="Submit" onclick="validate()">Submit</button>
+					</td>
+				</tr>
+			</table>
+			<div id="result">Employee Registered Successfully</div>
+		</center>
+	</body>
+</html>

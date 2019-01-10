@@ -32,7 +32,9 @@ public class DriverScript {
 		//7. Click on submit button
 		driver.findElement(By.id("submit")).click();
 		//8. Verify Employee registered successfully message is displayed
+		String resultMsg = driver.findElement(By.id("result")).getText();
 		//9. Close the browser
+		System.out.println(resultMsg);
 		driver.quit();
 		
 	}

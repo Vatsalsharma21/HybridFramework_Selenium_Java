@@ -1,0 +1,10 @@
+# Login page objects
+
+login_txtBox_empName = .//*[@id='empName']
+login_txtBox_empNumber = .//*[@id='empNumber']
+login_txtBox_password = .//*[@id='empPass']
+login_txtBox_CnfrmPassword = .//*[@id='empRePass']
+
+login_btn_submit = .//*[@id='submit']
+
+login_div_result = .//*[@id='result']

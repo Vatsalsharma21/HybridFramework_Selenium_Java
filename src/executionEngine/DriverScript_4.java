@@ -1,8 +1,10 @@
 package executionEngine;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
@@ -11,30 +13,29 @@ import config.Constants;
 import utility.ExcelUtils;
 
 public class DriverScript_4 {
-	//This driverScript has been updated with constant values
-	// Declare webdriver variable
+	
+	
 	private static WebDriver driver = null; 
-	//1. declare an object for ActionKeywordClass
 	public static ActionKeywords keyWordObj;
 	public static String currentKeyword;
-	
-	//2. declare an array of methods to store all the methods present in ActionKeywordClass
 	public static Method[] actionMethods;
 	public static Class actionClass;
 	
+	//adding OR stuff
+	public static Properties OR;
+	public static String currentPageObject;
+	
 	public static void main(String[] args) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InterruptedException {
-		//Creating an object of ActionKeyWords Class
-		keyWordObj = new ActionKeywords();
-		// TODO Auto-generated method stub
-		//upgrade for DriverScript_2
-		//We will try to execute the methods using reflections class
-		//3. We get the class from the class object of ActionKeyword
-		actionClass = keyWordObj.getClass();
 		
-		//4. Store all the methods present in this class in an array
+		keyWordObj = new ActionKeywords();
+		actionClass = keyWordObj.getClass();
 		actionMethods = actionClass.getMethods();
 		
-		//5.Setting path for excel Sheet
+		//load content of ObjectRepository file to properties 
+		//path of ObjectREpository is added to Constants file
+		OR = new Properties(System.getProperties());
+		OR.load(new FileInputStream(Constants.path_OR));
+		
 		String filePath = Constants.path_testData;
 		ExcelUtils.setExcelFile(filePath, Constants.sheet_testSteps);
 		int methodFoundFlag;
@@ -44,17 +45,19 @@ public class DriverScript_4 {
 			System.out.println(x.getName());
 		}
 		
-		//now we read the excel sheet for methods and then invoke them manually as and when found
 		for(int i=1;i<10;i++)
 		{
 			ActionKeywords.waitfor();
 			methodFoundFlag =0;
 			currentKeyword = ExcelUtils.getCellData(i, Constants.col_ActionKeyword);
+			//adding variable to store page objects
+			currentPageObject = ExcelUtils.getCellData(i, Constants.col_pageObject);
 			for(int j=0;j<actionMethods.length;j++)
 			{
 				if(actionMethods[j].getName().equals(currentKeyword))
 				{
-					actionMethods[j].invoke(keyWordObj);
+					//passing page object as string to all the methods - now we need to go and update the ActionKeyWords.java to accommodate the page object
+					actionMethods[j].invoke(keyWordObj,currentPageObject);
 					methodFoundFlag =1;
 					continue;
 				}

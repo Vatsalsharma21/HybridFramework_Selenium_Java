@@ -11,13 +11,13 @@ public class ActionKeywords {
 	public static WebDriver driver;
 	
 	public static void open_browser() {
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", Constants.path_chromeDriver);
 		driver = new ChromeDriver();
 	}
 	
 	public static void navigate() {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get(System.getProperty("user.dir") + "\\TestWebpage\\index.html");
+		driver.get(Constants.baseURL);
 	}
 	
 	public static void enter_empName() {
@@ -33,7 +33,7 @@ public class ActionKeywords {
 	}
 	
 	public static void enter_rePassword() {
-		driver.findElement(By.id("empRePass")).sendKeys("Password");
+		driver.findElement(By.id("empRePass")).sendKeys("Pasword");
 	}
 	
 	public static void click_submit() {
@@ -50,6 +50,6 @@ public class ActionKeywords {
 	}
 	
 	public static void waitfor() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 	}
 }

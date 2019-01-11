@@ -11,6 +11,7 @@ public class ActionKeywords {
 	public static WebDriver driver;
 	
 	public static void open_browser() {
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 	}
 	

@@ -37,19 +37,19 @@ public class DriverScript_2 {
 			}
 			else if(currentAction.equals("enter_empName"))
 			{
-				ActionKeywords.enter_empName();;
+				ActionKeywords.enter_empName();
 			}
 			else if(currentAction.equals("enter_empNumber"))
 			{
-				ActionKeywords.enter_empNumber();;
+				ActionKeywords.enter_empNumber();
 			}
 			else if(currentAction.equals("enter_Password"))
 			{
-				ActionKeywords.enter_Password();;
+				ActionKeywords.enter_Password();
 			}
 			else if(currentAction.equals("enter_rePassword"))
 			{
-				ActionKeywords.enter_rePassword();;
+				ActionKeywords.enter_rePassword();
 			}
 			else if(currentAction.equals("click_submit"))
 			{

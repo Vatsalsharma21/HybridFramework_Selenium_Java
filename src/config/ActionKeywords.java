@@ -48,4 +48,8 @@ public class ActionKeywords {
 	public static void close_broswer() {
 		driver.quit();
 	}
+	
+	public static void waitfor() throws InterruptedException {
+		Thread.sleep(5000);
+	}
 }

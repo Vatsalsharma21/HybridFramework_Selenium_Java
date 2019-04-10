@@ -37,7 +37,7 @@ public class DriverScript_4 {
 		OR.load(new FileInputStream(Constants.path_OR));
 		
 		String filePath = Constants.path_testData;
-		ExcelUtils.setExcelFile(filePath, Constants.sheet_testSteps);
+		ExcelUtils.setExcelFile(filePath);
 		int methodFoundFlag;
 		
 		for(Method x:actionMethods)
@@ -49,9 +49,9 @@ public class DriverScript_4 {
 		{
 			ActionKeywords.waitfor();
 			methodFoundFlag =0;
-			currentKeyword = ExcelUtils.getCellData(i, Constants.col_ActionKeyword);
+			currentKeyword = ExcelUtils.getCellData(i, Constants.col_ActionKeyword, Constants.sheet_testSteps);
 			//adding variable to store page objects
-			currentPageObject = ExcelUtils.getCellData(i, Constants.col_pageObject);
+			currentPageObject = ExcelUtils.getCellData(i, Constants.col_pageObject, Constants.sheet_testSteps);
 			for(int j=0;j<actionMethods.length;j++)
 			{
 				if(actionMethods[j].getName().equals(currentKeyword))
